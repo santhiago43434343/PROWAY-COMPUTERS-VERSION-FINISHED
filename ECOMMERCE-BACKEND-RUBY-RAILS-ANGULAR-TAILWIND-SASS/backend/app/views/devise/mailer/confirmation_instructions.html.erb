@@ -1,0 +1,15 @@
+<% confirm_url = "#{ENV.fetch('FRONTEND_URL', 'http://localhost:4200')}/#/confirmar-email?token=#{@token}" %>
+
+<h1>Bem-vindo à ProwayComputers! 👋</h1>
+
+<p>Falta só um passo: confirme seu e-mail para ativar a sua conta.</p>
+
+<p>
+  <a href="<%= confirm_url %>" style="display:inline-block;padding:10px 18px;background:#2563eb;color:#fff;text-decoration:none;border-radius:8px;">
+    Confirmar meu e-mail
+  </a>
+</p>
+
+<p>Ou copie e cole este endereço no navegador:<br><%= confirm_url %></p>
+
+<p>Se você não criou esta conta, é só ignorar este e-mail.</p>

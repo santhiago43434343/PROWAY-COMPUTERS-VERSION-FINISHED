@@ -1,0 +1,81 @@
+<section class="produto-list">
+  <div class="produto-list__card" *ngFor="let servidor of servidores">
+    <a [routerLink]="['/produto', servidor.id]" class="produto-list__link">
+      <img 
+        [src]="servidor.imagem" 
+        alt="{{ servidor.nome }}" 
+        zoomOnClick
+        class="w-32 h-32 object-cover rounded cursor-pointer" 
+      />
+      <h2 class="product-item__name">{{ servidor.nome }}</h2>
+      <p class="product-item__price">{{ servidor.preco | currency:'BRL' }}</p>
+      <p class="product-item__price-description">{{ servidor.descricaoPreco }}</p>
+    </a>
+
+    <div class="produto-item__actions flex gap-3 mt-2">
+      <button class="product-item__buy-button" type="button">Comprar</button>
+      <button 
+        class="bg-green-400 text-white px-4 py-2 rounded-md hover:bg-green-700 transition"
+        (click)="adicionarAoCarrinho(servidor)">
+        Adicionar ao carrinho
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Botão voltar --> 
+<div class="mt-6"> 
+  <button 
+    class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition" 
+    [routerLink]="['/']">
+    Voltar ao menu principal
+  </button>
+</div>
+
+
+
+
+<!--DIREITOS AUTORAIS DAS IMAGENS EM SERVIDORES COMPONENT,
+TODAS AS IMAGENS UTILIZADAS NESTE COMPONENTE É UTILIZADA APENAS 
+PARA FINS DE ESTUDO, SENDO DE RESPONSABILIDADE DE SEUS IDEALIZADORES
+NÃO SENDO PERMITIDA A REPRODUÇÃO OU USO INDEVIDO, OS CARDS DE
+PRODUTOS COMPONENT, SÃO DE AUTORIA DO PROGRAMA START, CAPGEMINI. 
+
+FONTES DOS CARDS::: 
+https://www.dell.com/pt-br/shop/ipovw/poweredge-xe8640
+
+https://www.dell.com/pt-br/shop/os-servidores-poweredge/servidor-rack-poweredge-r7725/spd/poweredge-r7725/pe_r7725_18633
+
+https://www.lenovo.com/br/pt/p/servers-storage/servers/towers/thinksystem-st50/77xx7trst51?msockid=2ed13a68e54566fb055b2cc2e49c6787
+
+www.lenovo.com/br/pt/p/servers-storage/servers/towers/thinksystem-st50-v2/len21ts0004#:~:text=Um%20servidor%20em%20torre%20de,crescer%20com%20o%20seu%20negócio.
+
+https://lenovopress.lenovo.com/lp1604-thinksystem-st650-v3-server#:~:text=The%20ThinkSystem%20ST650%20V3%20is,4U%20rack%20server%20if%20needed.
+
+https://www.lenovo.com/br/pt/p/servers-storage/servers/towers/lenovo-thinksystem-st45-v3/len21ts0040#:~:text=O%20compacto%201S%20ThinkSystem%20ST45%20V3%20é,ambientes%20de%20data%20center%20e%20de%20escritório.
+
+https://www.dell.com/pt-br/shop/ipovw/poweredge-t560
+
+https://www.dell.com/pt-br/shop/servidores-armazenamento-rede/servidor-rack-poweredge-r760xs/spd/poweredge-r760xs/pe_r760xs_16830?view=configurations#:~:text=O%20servidor%20de%20montagem%20em%20rack%20Dell,armazenamento%20e%20potência%20para%20seus%20aplicativos%20favoritos.
+
+https://www.dell.com/support/product-details/pt-br/product/poweredge-xe8640/upgrade
+
+https://www.lenovo.com/br/pt/p/servers-storage/servers/towers/thinksystem-st250-v3-tower-server/len21ts0025
+
+https://www.dell.com/en-us/shop/ipovw/poweredge-t160#:~:text=Form%20Factor,Interactive%20Demos
+
+https://www.dell.com/en-uk/shop/ipovw/poweredge-xe9780
+
+https://www.dell.com/pt-br/shop/servidores-armazenamento-rede/servidor-rack-poweredge-r360/spd/poweredge-r360/pe_r360_18250_bcc_3
+
+https://www.dell.com/pt-br/shop/cty/pdp/spd/alienware-aurora-ac16250-gaming-laptop/brpac16250ubtohtkw_x?tfcid=31768715&gacd=9657105-8050-5761040-275878141-0&dgc=ST&SA360CID=22720161340&gclsrc=aw.ds&gad_source=1&gad_campaignid=22720161340&gclid=Cj0KCQiA9t3KBhCQARIsAJOcR7xvDogCLTe48lasbS11Kl0vqyf7JPxcFDGw2NLNvj_a_h-nw1_KrcAaAgBDEALw_wcB
+
+https://www.lenovo.com/br/pt/p/laptops/thinkpad/thinkpadp/lenovo-thinkpad-p16v-gen-2-16-inch-intel-mobile-workstation/21ky001bbo?cid=br:sem|se|google|b2c-workstation-commercial-convers-google-shopping|||21KY001BBO|23272979178|195675284584|pla-2517139899517|shopping||commercial&gad_source=1&gad_campaignid=23272979178&gclid=Cj0KCQiA9t3KBhCQARIsAJOcR7zRBF8O6_nN2uk9aggpUxSbGygCZS2B0MFtbWvKjt9GMvB94RRn0fQaAv8dEALw_wcB
+
+https://www.dell.com/pt-br/shop/computadores-all-in-ones-e-workstations/pc-gamer-alienware-aurora/spd/alienware-aurora-act1250-gaming-desktop/brpact1250hcto07_x?_gl=1*2yjnxx*_up*MQ..*_gs*MQ..&gclid=Cj0KCQiA9t3KBhCQARIsAJOcR7xvDogCLTe48lasbS11Kl0vqyf7JPxcFDGw2NLNvj_a_h-nw1_KrcAaAgBDEALw_wcB&gclsrc=aw.ds
+
+https://www.dell.com/pt-br/shop/computadores-all-in-ones-e-workstations/pc-gamer-alienware-aurora/spd/alienware-aurora-act1250-gaming-desktop/brpact1250hcto09_x?_gl=1*hx23em*_up*MQ..*_gs*MQ..&gclid=Cj0KCQiA9t3KBhCQARIsAJOcR7xvDogCLTe48lasbS11Kl0vqyf7JPxcFDGw2NLNvj_a_h-nw1_KrcAaAgBDEALw_wcB&gclsrc=aw.ds
+
+https://www.dell.com/pt-br/shop/monitores-gamer/ar/8439?_gl=1*160xbza*_up*MQ..*_gs*MQ..&gclid=Cj0KCQiA9t3KBhCQARIsAJOcR7xvDogCLTe48lasbS11Kl0vqyf7JPxcFDGw2NLNvj_a_h-nw1_KrcAaAgBDEALw_wcB&gclsrc=aw.ds
+
+-->

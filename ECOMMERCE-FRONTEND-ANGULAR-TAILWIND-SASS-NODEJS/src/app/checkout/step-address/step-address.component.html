@@ -1,0 +1,16 @@
+<h2>Endereço</h2>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <input formControlName="rua" placeholder="Rua" />
+  <input formControlName="numero" placeholder="Número" />
+  <input formControlName="cidade" placeholder="Cidade" />
+  <input formControlName="estado" placeholder="Estado" />
+
+  <div class="flex gap-4 mt-6">
+    <button type="button" (click)="back.emit()" class="bg-gray-400 text-white px-4 py-2 rounded">
+      Voltar
+    </button>
+    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">
+      Continuar
+    </button>
+  </div>
+</form>

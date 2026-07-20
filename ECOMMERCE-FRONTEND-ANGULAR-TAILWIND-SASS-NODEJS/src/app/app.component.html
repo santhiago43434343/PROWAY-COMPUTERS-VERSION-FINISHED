@@ -1,0 +1,29 @@
+<div class="container-menu">
+  <app-header></app-header>
+
+  <mat-toolbar color="primary">
+  </mat-toolbar>
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+
+  <app-cookie-banner></app-cookie-banner>
+  <app-footer></app-footer>
+
+  <!-- VLibras (acessibilidade em Libras) -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+
+  <!-- Botão flutuante do WhatsApp -->
+  <a href="https://wa.me/5513991889820?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20ProwayComputers%20e%20gostaria%20de%20ajuda."
+     target="_blank" rel="noopener noreferrer"
+     aria-label="Falar no WhatsApp"
+     style="position:fixed; bottom:96px; right:24px; z-index:9998; width:56px; height:56px; border-radius:9999px; background:#25D366; color:#fff; display:flex; align-items:center; justify-content:center; font-size:28px; box-shadow:0 4px 12px rgba(0,0,0,.25); text-decoration:none;">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+</div>

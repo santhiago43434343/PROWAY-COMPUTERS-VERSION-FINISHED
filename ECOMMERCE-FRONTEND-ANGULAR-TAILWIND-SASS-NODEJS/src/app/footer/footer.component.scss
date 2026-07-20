@@ -1,0 +1,40 @@
+.footer {
+  @apply bg-gray-100 text-gray-700 text-lg shadow-inner;
+  background: linear-gradient(to right, #f3f4f6, #e5e7eb); // substitui $light-gray, $light-gray-2
+}
+
+.footer__container {
+  @apply flex justify-evenly flex-wrap p-5;
+}
+
+.footer__container > div {
+  @apply flex-1 min-w-[250px] m-2 bg-gray-200 p-2 rounded-lg shadow-sm;
+}
+
+.footer__copyright {
+  @apply text-center mt-5 bg-gray-200 font-bold p-5 text-gray-700;
+}
+
+.footer__title {
+  @apply text-xl font-bold text-blue-600 mb-2 bg-gray-200 p-2 rounded-lg shadow-sm;
+}
+
+.footer__about-text {
+  @apply w-[400px] text-justify;
+}
+
+.footer i {
+  @apply text-orange-500 text-xl mr-2;
+}
+
+.footer li {
+  @apply my-2 bg-gray-200 p-2 rounded-lg shadow-sm;
+}
+
+.footer ul {
+  @apply list-none p-0 m-0;
+}
+
+address {
+  @apply bg-gray-200 p-4 rounded-md;
+}

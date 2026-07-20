@@ -1,0 +1,18 @@
+<section class="produto-list">
+  <div class="produto-list__card" *ngFor="let item of resultados">
+    <a [routerLink]="['/produto', item.id]" class="produto-list__link">
+      <img [src]="item.imagem" alt="{{ item.nome }}" />
+      <h2 class="product-item__name">{{ item.nome }}</h2>
+      <p class="product-item__price">{{ item.preco | currency:'BRL' }}</p>
+      <p class="product-item__price-description">{{ item.descricaoPreco }}</p>
+    </a>
+
+    <div class="produto-item__actions flex gap-3 mt-2">
+      <button class="product-item__buy-button" type="button">Comprar</button>
+      <button class="bg-green-400 text-white px-4 py-2 rounded-md hover:bg-green-700 transition"
+              (click)="adicionarAoCarrinho(item)">
+        Adicionar ao carrinho
+      </button>
+    </div>
+  </div>
+</section>

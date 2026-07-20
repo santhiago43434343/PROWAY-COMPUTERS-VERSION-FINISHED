@@ -1,0 +1,55 @@
+/* HEADER BASE */
+.main-header {
+  @apply flex flex-wrap justify-between items-center gap-8 py-4;
+}
+
+/* TITLES */
+.main-header__title--blue {
+  @apply text-blue-600 text-6xl font-bold;
+}
+
+.main-header__title--orange {
+  @apply text-orange-500 text-[60px] font-bold;
+}
+
+/* MENU */
+.main-header__menu ul {
+  @apply flex justify-end list-none p-0 m-0 gap-6;
+}
+
+.main-header__menu a {
+  @apply inline-flex items-center gap-2 cursor-pointer px-2 py-2 text-gray-600 text-xl no-underline transition duration-300;
+}
+
+.main-header__menu a:hover {
+  @apply bg-blue-600 text-white underline;
+}
+
+/* BADGE CARRINHO contador do carrinho */
+.badge-carrinho {
+  @apply text-xs bg-red-600 text-white px-2 py-0.5 rounded-full leading-none inline-block align-middle relative -top-px;
+}
+
+
+/* SEARCH FORM */
+.search-form {
+  @apply flex items-center gap-2 mt-4 h-14;
+}
+
+.search-form input {
+  @apply flex-1 h-14 px-4 bg-gray-100 text-gray-600 border-0 text-xl shadow-md rounded transition duration-300;
+}
+
+.search-form button {
+  @apply w-14 h-14 bg-blue-600 text-white text-xl cursor-pointer rounded shadow-lg transition duration-300;
+}
+
+.search-form button:hover {
+  @apply bg-blue-700;
+}
+
+/* ICONS */
+.main-header i,
+.footer i {
+  @apply text-orange-500;
+}

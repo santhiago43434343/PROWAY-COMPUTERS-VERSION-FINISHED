@@ -1,0 +1,55 @@
+/* src/app/shared/produto-list.scss */
+.produto-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.produto-list__card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  transition: transform 0.2s ease-in-out;
+}
+.produto-list__card:hover {
+  transform: translateY(-4px);
+}
+.produto-list__card .produto-list__link {
+  text-decoration: none;
+  color: inherit;
+}
+.produto-list__card .produto-list__link img {
+  width: 100%;
+  border-radius: 8px;
+}
+.produto-list__card .produto-list__link .product-item__name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+.produto-list__card .produto-list__link .product-item__price {
+  font-size: 1rem;
+  color: #333;
+}
+.produto-list__card .produto-list__link .product-item__price-description {
+  font-size: 0.9rem;
+  color: #666;
+}
+.produto-list__card .produto-item__actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.produto-list__card .produto-item__actions .product-item__buy-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.produto-list__card .produto-item__actions .product-item__buy-button:hover {
+  background-color: rgb(0, 98.4, 204);
+}/*# sourceMappingURL=produto-list.css.map */

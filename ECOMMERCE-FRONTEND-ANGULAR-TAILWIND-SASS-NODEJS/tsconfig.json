@@ -1,0 +1,49 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "composite": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "preserve",
+    
+    /* Abaixo removemos o "baseUrl" e ajustamos os paths 
+       para começar com "./src" para evitar avisos de depreciação.
+    */
+    "paths": {
+      "@app/*": ["./src/app/*"],
+      "@components/*": ["./src/app/components/*"],
+      "@interfaces/*": ["./src/interfaces/*"],
+      "@services/*": ["./src/app/services/*"],
+      "@pages/*": ["./src/app/pages/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@header/*": ["./src/app/header/*"],
+      "@footer/*": ["./src/app/footer/*"],
+      "@produtos/*": ["./src/app/produtos/*"]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "typeCheckHostBindings": true,
+    "strictTemplates": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/main.ts", 
+    "src/polyfills.ts", 
+    "src/app/**/*.ts"
+  ],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.spec.json" }
+  ]
+}

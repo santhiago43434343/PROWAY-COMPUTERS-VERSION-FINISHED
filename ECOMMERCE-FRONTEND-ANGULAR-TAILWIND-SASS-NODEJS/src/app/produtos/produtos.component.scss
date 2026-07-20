@@ -1,0 +1,53 @@
+.product-item__price {
+  @apply text-red-600 text-2xl font-bold;
+}
+
+.product-list {
+  @apply flex flex-wrap justify-evenly items-center gap-5 py-10 w-fit;
+}
+
+.product-list__card {
+  @apply box-border p-3 rounded-md h-[450px] bg-white shadow-md transition-transform duration-300;
+}
+
+.product-list__card:hover {
+  @apply outline outline-1 outline-blue-600 scale-110 cursor-pointer;
+}
+
+.product-list__link {
+  @apply flex flex-col items-center gap-2 no-underline;
+}
+
+.product-list__card img {
+  @apply h-[250px] w-[250px] block rounded-md;
+}
+
+.product-item__name {
+  @apply text-xl font-semibold text-blue-600;
+}
+
+.product-item__price {
+  @apply text-orange-500 text-xl font-bold -mt-1;
+}
+
+.product-item__price-description {
+  @apply text-gray-600 text-lg font-bold -mt-2;
+}
+
+.produto-list {
+  @apply flex flex-wrap gap-5 justify-center;
+}
+/* TELA INICIAL DOS PRODUTOS:::*/
+.produto-list__card {
+  @apply w-[300px] border border-gray-300 rounded-lg p-4 shadow-md flex flex-col items-center;
+}
+
+.product-item__buy-button {
+  @apply bg-blue-600 text-white text-lg px-4 py-2 rounded-md transition 
+         hover:bg-blue-700 active:scale-95 cursor-pointer;
+}
+
+.product-item__cart-button {
+  @apply bg-red-600 text-white text-lg px-4 py-2 rounded-md transition 
+         hover:bg-red-700 active:scale-95 cursor-pointer;
+}

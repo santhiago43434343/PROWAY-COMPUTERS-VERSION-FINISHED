@@ -1,0 +1,19 @@
+<h1>Pagamento Confirmado! ✅</h1>
+<p>Olá! O pagamento do seu pedido <strong>#<%= @pedido.id %></strong> foi processado com sucesso.</p>
+
+<hr>
+
+<p><strong>Resumo do Pedido:</strong></p>
+<ul>
+  <li>Número do pedido: <strong>#<%= @pedido.id %></strong></li>
+  <li>Código de rastreio: <strong>PED-<%= @pedido.id %></strong></li>
+  <li>Valor: R$ <%= @pedido.total %></li>
+  <li>Método de pagamento: <%= @pedido.payment.to_s.upcase %></li>
+  <li>Status: <strong><%= @pedido.status.to_s.upcase %></strong></li>
+</ul>
+
+<p>Você pode acompanhar o pedido na área <strong>"Meus Pedidos"</strong> do site.</p>
+
+<p><em>Em breve você receberá novas informações sobre o envio.</em></p>
+
+<p>Obrigado por escolher a <strong>Proway Computers</strong>!</p>

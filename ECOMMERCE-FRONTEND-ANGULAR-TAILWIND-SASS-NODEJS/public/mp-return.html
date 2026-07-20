@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Processando retorno do pagamento...</title>
+</head>
+<body>
+  <p style="font-family: sans-serif; text-align: center; margin-top: 3rem; color: #374151;">
+    Processando seu pagamento, aguarde...
+  </p>
+  <script>
+    // O Mercado Pago redireciona para cá com os parâmetros do pagamento na query string.
+    // Reencaminhamos para a rota do Angular (hash routing) preservando esses parâmetros.
+    (function () {
+      var qs = window.location.search || '';
+      window.location.replace('/#/checkout-retorno' + qs);
+    })();
+  </script>
+</body>
+</html>

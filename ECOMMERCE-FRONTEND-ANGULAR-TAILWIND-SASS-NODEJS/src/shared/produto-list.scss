@@ -1,0 +1,79 @@
+/* src/app/shared/produto-list.scss */
+// src/app/shared/_produto-list.scss
+
+//SASS PARA SERVIDORES.COMPONENT
+
+@use "sass:color";
+
+// Variáveis
+$card-radius: 8px;
+$card-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+$primary-color: #007bff;
+$primary-hover: color.adjust($primary-color, $lightness: -10%);
+
+// Layout da lista
+.produto-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+
+  &__card {
+    background: #fff;
+    border-radius: $card-radius;
+    box-shadow: $card-shadow;
+    padding: 1rem;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    .produto-list__link {
+      text-decoration: none;
+      color: inherit;
+
+      img {
+        width: 100%;
+        border-radius: $card-radius;
+      }
+
+      .product-item__name {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin: 0.5rem 0;
+      }
+
+      .product-item__price {
+        font-size: 1rem;
+        color: #333;
+      }
+
+      .product-item__price-description {
+        font-size: 0.9rem;
+        color: #666;
+      }
+    }
+
+    .produto-item__actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+
+      .product-item__buy-button {
+        background-color: $primary-color;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &:hover {
+          background-color: $primary-hover;
+        }
+      }
+    }
+  }
+}
+

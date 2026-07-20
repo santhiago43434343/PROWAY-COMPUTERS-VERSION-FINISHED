@@ -1,0 +1,57 @@
+<!-- TOQUE DE TAILWIND PARA EULA -->
+
+<div class="max-w-5xl mx-auto p-6 md:p-12 bg-white shadow-sm rounded-lg my-10 text-gray-800">
+    <header class="border-b pb-6 mb-8">
+        <h1 class="text-3xl font-black text-[#000080] uppercase tracking-tighter">
+            Termos de Uso e Direitos Autorais
+        </h1>
+        <p class="text-sm text-gray-500 mt-2 italic">Última atualização: Maio de 2026</p>
+    </header>
+
+    <!-- Aviso Legal Principal -->
+    <section class="bg-blue-50 border-l-4 border-[#000080] p-6 mb-10">
+        <h2 class="text-lg font-bold text-[#000080] mb-2 flex items-center gap-2">
+            <i class="fa-solid fa-circle-info"></i> AVISO DE EXIBIÇÃO DE CONTEÚDO
+        </h2>
+        <p class="text-sm leading-relaxed">
+            Todas as imagens utilizadas neste projeto são para fins de exibição de forma <strong>fictícia e
+                interativa</strong> ao tema do projeto.
+            O uso indevido, compartilhamento, exibição e uso para fins comerciais são explicitamente proibidos de acordo
+            com a
+            <strong>Lei de Plágio (Artigo 184 do Código Penal e regido pela Lei nº 9.610/1998)</strong>.
+        </p>
+        <p class="text-xs mt-4 text-gray-600">
+            A responsabilidade pelo uso pós-download do repositório conforme disponibilizado em
+            <code class="bg-gray-200 px-1 rounded">github.com</code> é integralmente do usuário.
+        </p>
+    </section>
+
+    <!-- Lista de Fontes Dinâmica -->
+    <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-4 border-b pb-2">Fontes das Imagens</h2>
+        <p class="text-sm text-gray-600 mb-6">
+            As imagens são de propriedade de seus respectivos idealizadores. Abaixo listamos as fontes consultadas para
+            a composição visual deste projeto acadêmico:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div *ngFor="let fonte of fontesDasImagens"
+                class="flex items-center p-3 bg-gray-50 rounded-md hover:bg-gray-100 transition-colors border border-gray-100">
+                <i class="fa-solid fa-link text-orange-500 mr-3 text-xs"></i>
+                <a [href]="fonte.url" target="_blank" rel="noopener noreferrer"
+                    class="text-sm font-medium text-blue-700 hover:text-orange-600 truncate">
+                    {{ fonte.site }}
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé do documento -->
+    <footer class="mt-12 pt-6 border-t text-center">
+        <button routerLink="/home"
+            class="bg-[#000080] text-white px-8 py-2 rounded-full font-bold hover:bg-orange-600 transition-all shadow-md">
+            Voltar para o Início
+        </button>
+    </footer>
+</div>
+<!--FINISHED-->

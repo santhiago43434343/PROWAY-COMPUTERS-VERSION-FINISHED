@@ -1,0 +1,58 @@
+<div class="step-complete">
+  <h2>🎉 Pedido concluído com sucesso!</h2>
+
+  <p>Obrigado pela sua compra, estamos preparando tudo com carinho.</p>
+
+  <div class="pedido-info">
+    <p><strong>Código de rastreio:</strong> {{ rastreio }}</p>
+    <p><strong>Status do pedido:</strong> <span class="badge">{{ statusPedido }}</span></p>
+  </div>
+
+  <div *ngIf="urlPagamento" class="mercadopago-container">
+    <hr>
+    <h3>Conclua seu Pagamento</h3>
+    <p>Clique no botão abaixo para pagar com cartão ou outros métodos no Mercado Pago:</p>
+    
+    <a [href]="urlPagamento" target="_blank" class="btn-mercadopago">
+      💳 PAGAR COM MERCADO PAGO
+    </a>
+    <hr>
+  </div>
+
+  <div *ngIf="paymentMethod === 'pix'" class="pix-container">
+    <hr>
+    <ng-container *ngIf="statusPedido !== 'pago'; else pixPago">
+      <h3>Pague agora com PIX</h3>
+      <p>Escaneie o QR Code abaixo ou copie o código para pagar:</p>
+
+      <div class="qr-code-box">
+        <img [src]="pixQrBase64 ? ('data:image/png;base64,' + pixQrBase64) : ('https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=' + pixCode)"
+             alt="QR Code para pagamento" width="180" height="180">
+      </div>
+
+      <div class="pix-action">
+        <input type="text" [value]="pixCode" readonly #pixInput class="pix-input">
+        <button (click)="copiarPix(pixInput)" class="btn-copy">
+          📋 Copiar Código PIX
+        </button>
+      </div>
+
+      <p class="pix-status">⏳ Aguardando confirmação do pagamento...</p>
+    </ng-container>
+
+    <ng-template #pixPago>
+      <h3>✅ Pagamento PIX confirmado!</h3>
+      <p>Recebemos seu pagamento. Obrigado pela compra! 🎉</p>
+    </ng-template>
+    <hr>
+  </div>
+
+  <div class="mensagem-final">
+    <p>Você receberá um e‑mail com os detalhes da sua compra em breve.</p>
+    <p>Acompanhe seu pedido pelo link da transportadora utilizando seu código.</p>
+  </div>
+
+  <button routerLink="/" class="btn-voltar">
+    ⬅️ Voltar para a loja
+  </button>
+</div> 

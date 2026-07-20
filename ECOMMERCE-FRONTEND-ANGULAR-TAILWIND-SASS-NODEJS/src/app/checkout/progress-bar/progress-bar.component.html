@@ -1,0 +1,13 @@
+
+<div class="flex justify-between items-center">
+  <div *ngFor="let step of steps" class="flex-1 text-center">
+    <div [ngClass]="{
+          'text-orange-500 font-bold': currentStep === step.id,
+          'text-gray-400': currentStep !== step.id
+        }">
+      {{ step.label }}
+    </div>
+    <div class="h-1 bg-gray-300 mt-2"
+         [ngClass]="{ 'bg-orange-500': currentStep >= step.id }"></div>
+  </div>
+</div>

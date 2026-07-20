@@ -1,0 +1,113 @@
+// Variáveis para facilitar a manutenção
+$cor-azul: #0000FF;
+$cor-amarela: #FFD700;
+$cor-preta: #000;
+$cor-erro: #d9534f;
+
+.container-cancelamento {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+// Classe para os textos que você quer em azul
+.texto-azul {
+  color: $cor-azul;
+}
+
+.busca-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.input-busca {
+  padding: 12px;
+  width: 60%;
+  border: 2px solid #ddd;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+
+  &:focus {
+    border-color: $cor-azul;
+  }
+}
+
+.btn-buscar {
+  padding: 12px 20px;
+  background-color: $cor-amarela;
+  color: $cor-azul; // Texto do botão em azul conforme pedido
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+
+  &:hover {
+    background-color: darken($cor-amarela, 10%);
+  }
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+}
+
+.card-reserva {
+  margin-top: 30px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.alerta-cancelamento {
+  margin-top: 20px;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+
+  p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+}
+
+// Estilo do link camuflado da ANTT
+.link-antt {
+  color: inherit; // Mantém a cor do itálico (cinza ou preto)
+  text-decoration: none;
+  border-bottom: 1px solid $cor-azul; // Linha azul fina embaixo
+  font-weight: bold;
+  transition: all 0.2s;
+
+  &:hover {
+    color: $cor-azul;
+    text-decoration: underline;
+  }
+}
+
+.btn-confirmar {
+  width: 100%;
+  padding: 15px;
+  background-color: $cor-preta;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  margin-top: 15px;
+  cursor: pointer;
+  font-weight: bold;
+
+  &:hover {
+    background-color: #333;
+  }
+}
+
+.erro-msg {
+  color: $cor-erro;
+  margin-top: 15px;
+  font-weight: bold;
+}

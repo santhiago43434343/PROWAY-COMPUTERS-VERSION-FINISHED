@@ -1,0 +1,104 @@
+services:
+  db:
+    image: postgres:15
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_DB=ecommerce_development
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    # Sinaliza "pronto" só quando o Postgres aceita conexões — evita o Rails subir
+    # antes do banco e cair.
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ecommerce_development"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  web:
+    build:
+      context: ./ECOMMERCE-BACKEND-RUBY-RAILS-ANGULAR-TAILWIND-SASS/backend
+    env_file:
+      - .env
+    environment:
+      # Passamos as variáveis separadas para evitar erro de parsing na URL com '@'
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DATABASE_HOST=db
+      - MP_ACCESS_TOKEN=${MP_ACCESS_TOKEN}
+      - MP_PIX_ACCESS_TOKEN=${MP_PIX_ACCESS_TOKEN}
+      - APP_BASE_URL=${APP_BASE_URL}
+      - FRONTEND_URL=${FRONTEND_URL}
+      - CORS_ORIGINS=${CORS_ORIGINS}
+      - DEVISE_JWT_SECRET_KEY=${DEVISE_JWT_SECRET_KEY}
+      - PAYPAL_SKIP_WEBHOOK_VERIFICATION=${PAYPAL_SKIP_WEBHOOK_VERIFICATION}
+      - PAYPAL_ENV=${PAYPAL_ENV}
+      - PAYPAL_CLIENT_ID=${PAYPAL_CLIENT_ID}
+      - PAYPAL_CLIENT_SECRET=${PAYPAL_CLIENT_SECRET}
+      - PAYPAL_WEBHOOK_ID=${PAYPAL_WEBHOOK_ID}
+      - SMTP_ADDRESS=${SMTP_ADDRESS}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_DOMAIN=${SMTP_DOMAIN}
+      - SMTP_USERNAME=${SMTP_USERNAME}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
+      - SMTP_AUTHENTICATION=${SMTP_AUTHENTICATION}
+      - MAILER_HOST=${MAILER_HOST}
+      - MAILER_PORT=${MAILER_PORT}
+      - RECAPTCHA_SECRET_KEY=${RECAPTCHA_SECRET_KEY}
+      - MELHOR_ENVIO_TOKEN=${MELHOR_ENVIO_TOKEN}
+      - MELHOR_ENVIO_SANDBOX=${MELHOR_ENVIO_SANDBOX}
+      - FRETE_CEP_ORIGEM=${FRETE_CEP_ORIGEM}
+    # Se o Rails cair, o Docker reergue (antes ficava morto e o nginx entrava em loop).
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./ECOMMERCE-BACKEND-RUBY-RAILS-ANGULAR-TAILWIND-SASS/backend:/app
+      - /app/tmp 
+    # O comando limpa o PID do servidor para evitar erro de "server already running"
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0 -p 3000"
+
+  frontend:
+    build:
+      context: ./ECOMMERCE-FRONTEND-ANGULAR-TAILWIND-SASS-NODEJS
+    # Imagem já traz o Angular compilado e servido por Nginx (sem ng serve).
+    ports:
+      - "4200:80"
+    depends_on:
+      - web
+    restart: unless-stopped
+
+  pgadmin:
+    image: dpage/pgadmin4
+    env_file:
+      - .env
+    environment:
+      PGADMIN_DEFAULT_EMAIL: santhiago34343434@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+
+  # ngrok: túnel público pro frontend (nginx, porta 80 interna). Ativa o retorno do MP.
+  # ATENÇÃO: só suba com o trip-bus PARADO — o domínio fixo do free serve 1 projeto por vez.
+  ngrok:
+    image: ngrok/ngrok:latest
+    container_name: proway_ngrok
+    restart: unless-stopped
+    command: http --url=combinative-rita-nonconspiratorial.ngrok-free.dev frontend:80
+    environment:
+      NGROK_AUTHTOKEN: ${NGROK_AUTHTOKEN}
+    depends_on:
+      - frontend
+
+volumes:
+  postgres_data:

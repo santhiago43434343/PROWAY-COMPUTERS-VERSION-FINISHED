@@ -1,0 +1,107 @@
+<h2 class="text-4xl font-bold text-gray-700 py-2">
+  <i class="fa-solid fa-cart-arrow-down mr-2"></i>Carrinho
+</h2>
+
+<div *ngIf="itemsCarrinho.length > 0; else semProduto">
+  <!-- Lista de itens -->
+  <ul class="space-y-3">
+    <li *ngFor="let itemCarrinho of itemsCarrinho; let i = index"
+        class="flex items-center justify-between h-24 rounded-lg shadow-md overflow-hidden px-4">
+
+      <img [src]="itemCarrinho.imagem" alt="{{ itemCarrinho.nome }}"
+           class="w-24 h-24 object-cover rounded" />
+
+      <div class="flex-1 px-4">
+        <p class="font-semibold text-gray-800">{{ itemCarrinho.nome }}</p>
+        <p class="text-sm text-gray-600">{{ itemCarrinho.descricao }}</p>
+        <p class="text-red-600 font-bold">R$ {{ itemCarrinho.preco | number:'1.2-2' }}</p>
+
+        <label class="text-sm text-gray-700">
+          Quantidade:
+          <input type="number" [(ngModel)]="itemCarrinho.quantidadeSelecionada" min="1"
+                 class="w-12 text-center border rounded" />
+        </label>
+      </div>
+
+      <button (click)="removerItem(i)"
+              class="bg-red-500 text-white px-4 h-full rounded-r transition hover:brightness-90">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </li>
+  </ul>
+
+  <!-- Subtotal -->
+  <h2 class="text-2xl font-bold text-gray-700 py-2">
+    Subtotal: R$ {{ total | number:'1.2-2' }}
+  </h2>
+
+  <!-- Cálculo de frete -->
+  <div class="mt-6 p-4 bg-gray-100 rounded-lg shadow">
+    <label for="cep" class="block text-xl font-semibold text-gray-700 mb-2">
+      <i class="fa-solid fa-truck-fast mr-2 text-blue-600"></i>Calcular frete
+    </label>
+
+    <div class="flex items-center gap-2 flex-wrap">
+      <input id="cep" [(ngModel)]="cep" (ngModelChange)="aoDigitarCep($event)"
+             placeholder="00000-000" maxlength="9" inputmode="numeric"
+             class="border border-gray-300 rounded px-3 py-2 w-40 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      <button (click)="calcularFrete()"
+              class="bg-blue-600 text-white px-4 py-2 rounded font-bold transition hover:bg-blue-700">
+        Calcular
+      </button>
+      <a href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank" rel="noopener"
+         class="text-sm text-blue-600 hover:underline">Não sei meu CEP</a>
+    </div>
+
+    <p *ngIf="cidadeUf" class="text-sm text-gray-600 mt-2">
+      <i class="fa-solid fa-location-dot mr-1 text-blue-600"></i>{{ cidadeUf }}
+    </p>
+    <p *ngIf="erroFrete" class="text-sm text-red-600 mt-2">{{ erroFrete }}</p>
+
+    <!-- Carregando -->
+    <p *ngIf="carregandoFrete" class="text-sm text-gray-600 mt-3">
+      <i class="fa-solid fa-spinner fa-spin mr-1"></i>Calculando frete...
+    </p>
+
+    <!-- Opções de frete (dinâmicas) -->
+    <div *ngIf="opcoesFrete.length > 0 && !carregandoFrete" class="mt-3 space-y-2">
+      <label *ngFor="let op of opcoesFrete"
+             class="flex items-center justify-between gap-3 p-3 bg-white rounded-lg border cursor-pointer transition hover:border-blue-500"
+             [class.border-blue-600]="servicoSelecionado === op.servico"
+             [class.ring-2]="servicoSelecionado === op.servico"
+             [class.ring-blue-500]="servicoSelecionado === op.servico">
+        <span class="flex items-center gap-2">
+          <input type="radio" name="frete"
+                 [checked]="servicoSelecionado === op.servico"
+                 (change)="selecionarFrete(op)" />
+          <span class="font-semibold text-gray-800">{{ op.servico }}</span>
+        </span>
+        <span class="text-right">
+          <span class="block text-blue-700 font-bold">R$ {{ op.preco | number:'1.2-2' }}</span>
+          <span class="block text-xs text-gray-500">{{ op.prazo }} dias úteis</span>
+        </span>
+      </label>
+
+      <p *ngIf="freteMock" class="text-xs text-gray-400 italic mt-1">
+        * Valores simulados (modo demo). Configure o token do Melhor Envio para cotações reais.
+      </p>
+    </div>
+  </div>
+
+  <!-- Total com frete -->
+  <h2 class="text-2xl font-bold text-gray-700 py-2 mt-4">
+    Total com Frete:
+    <span class="text-red-600">R$ {{ totalComFrete | number:'1.2-2' }}</span>
+  </h2>
+
+  <!-- Botão comprar -->
+  <button (click)="comprar()"
+          class="bg-white text-red-600 border border-red-600 rounded px-4 py-2 font-bold text-lg mb-3 transition hover:bg-red-600 hover:text-white">
+    Comprar
+  </button>
+</div>
+
+<!-- Caso não tenha produtos -->
+<ng-template #semProduto>
+  <p class="text-gray-500 italic">Nenhum produto foi adicionado ao carrinho</p>
+</ng-template>

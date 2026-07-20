@@ -1,0 +1,12 @@
+<div *ngIf="fretePAC > 0 || freteSEDEX > 0" class="mt-4">
+  <p>
+    <input type="radio" name="frete" (change)="selecionarFrete(fretePAC)" />
+    PAC: R$ {{ fretePAC | number:'1.2-2' }} ({{ prazoPAC }} dias úteis)
+  </p>
+  <p>
+    <input type="radio" name="frete" (change)="selecionarFrete(freteSEDEX)" />
+    SEDEX: R$ {{ freteSEDEX | number:'1.2-2' }} ({{ prazoSEDEX }} dias úteis)
+  </p>
+</div>
+
+<h3>Total com Frete: R$ {{ totalComFrete | number:'1.2-2' }}</h3>

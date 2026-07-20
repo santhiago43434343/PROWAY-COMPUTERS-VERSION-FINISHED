@@ -1,0 +1,36 @@
+<h2>Carrinho</h2>
+
+<div *ngIf="cart.length > 0; else semProduto">
+  <ul>
+    <li *ngFor="let item of cart; let i = index" class="flex items-center gap-4 border-b py-2">
+      
+      <!-- 🔑 Imagem do produto com zoom -->
+      <img [src]="item.imagem" alt="{{ item.nome }}" zoomOnClick class="w-20 h-20 object-cover rounded" />
+
+      <!-- 🔑 Informações -->
+      <div class="flex-1">
+        <p class="font-semibold text-gray-800">{{ item.nome }}</p>
+        <p class="text-sm text-gray-600">{{ item.descricao }}</p>
+        <p class="text-red-600 font-bold">R$ {{ item.preco | number:'1.2-2' }}</p>
+        <p class="text-sm text-gray-700">Qtd: {{ item.quantidadeSelecionada || 1 }}</p>
+      </div>
+
+      <!-- 🔑 Botão remover -->
+      <button (click)="removerItem(i)" class="ml-2 bg-red-500 text-white px-3 py-1 rounded">
+        Remover
+      </button>
+    </li>
+  </ul>
+
+  <!-- Total -->
+  <p class="mt-4 font-bold">Total: R$ {{ total | number:'1.2-2' }}</p>
+
+  <!-- Botão continuar -->
+  <button (click)="goNext()" class="bg-blue-600 text-white px-6 py-2 rounded mt-4">
+    Continuar
+  </button>
+</div>
+
+<ng-template #semProduto>
+  <p class="text-gray-500 italic">Nenhum produto foi adicionado ao carrinho</p>
+</ng-template>

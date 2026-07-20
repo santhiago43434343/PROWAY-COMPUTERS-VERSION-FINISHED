@@ -1,0 +1,48 @@
+<div class="min-h-[70vh] flex items-center justify-center px-4">
+  <div class="w-full max-w-md bg-white rounded-3xl shadow-lg p-8 text-center">
+
+    <ng-container *ngIf="aprovado">
+      <div class="text-6xl mb-4">✅</div>
+      <h1 class="text-2xl font-bold text-green-600 mb-2">Pagamento aprovado!</h1>
+      <p class="text-gray-600">Seu pedido foi confirmado. Obrigado pela compra! 🎉</p>
+
+      <div class="mt-5 bg-gray-50 rounded-2xl p-4 text-left text-sm text-gray-700 space-y-1">
+        <p *ngIf="pedidoId">Pedido: <span class="font-semibold">#{{ pedidoId }}</span></p>
+        <p *ngIf="rastreio">Código de rastreio: <span class="font-semibold">{{ rastreio }}</span></p>
+        <p *ngIf="confirmando" class="text-gray-400">Confirmando o pagamento...</p>
+      </div>
+
+      <p class="mt-4 text-sm text-gray-500">
+        📧 Você receberá um e-mail com mais informações sobre o seu pedido.
+      </p>
+    </ng-container>
+
+    <ng-container *ngIf="pendente">
+      <div class="text-6xl mb-4">⏳</div>
+      <h1 class="text-2xl font-bold text-yellow-600 mb-2">Pagamento pendente</h1>
+      <p class="text-gray-600">
+        Estamos aguardando a confirmação do pagamento
+        <span *ngIf="pedidoId" class="font-semibold">do pedido #{{ pedidoId }}</span>.
+      </p>
+    </ng-container>
+
+    <ng-container *ngIf="recusado">
+      <div class="text-6xl mb-4">❌</div>
+      <h1 class="text-2xl font-bold text-red-600 mb-2">Pagamento não concluído</h1>
+      <p class="text-gray-600">O pagamento não foi aprovado. Você pode tentar novamente.</p>
+    </ng-container>
+
+    <p *ngIf="paymentId" class="text-xs text-gray-400 mt-4">ID do pagamento: {{ paymentId }}</p>
+
+    <div class="mt-6 flex flex-wrap gap-3 justify-center">
+      <a routerLink="/home"
+         class="bg-blue-600 text-white font-semibold py-2.5 px-5 rounded-xl hover:bg-blue-700 transition">
+        Voltar à loja
+      </a>
+      <a routerLink="/meus-pedidos"
+         class="border border-gray-300 text-gray-700 font-semibold py-2.5 px-5 rounded-xl hover:bg-gray-50 transition">
+        Meus pedidos
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  img {
+    @apply transition-transform duration-300 cursor-pointer;
+  }
+  img:hover {
+    @apply scale-110;
+  }
+}
+
+
+
+
+/*img {
+  transition: transform 0.38s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.9); // zoom suave ao passar o mouse
+  }
+
+  &:active {
+    transform: scale(1.9); // zoom maior ao clicar
+  }
+}*/
+
+/* Fundo geral do site: azul vivo mesclado com amarelo forte */
+body {
+  background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 60%, #facc15 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}

@@ -1,0 +1,82 @@
+<div class="max-w-5xl mx-auto p-6 md:p-12 bg-white shadow-lg rounded-2xl my-10 text-gray-800">
+    <!-- Cabeçalho com Gradient -->
+    <header class="text-center mb-12">
+        <h1 class="text-4xl font-black text-[#000080] uppercase tracking-tighter mb-4">
+            Nossa História
+        </h1>
+        <div class="h-1 w-24 bg-orange-500 mx-auto rounded-full"></div>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <!-- Texto Principal -->
+        <section class="space-y-6 text-lg leading-relaxed text-justify">
+            <p>
+                A <span class="font-bold text-[#000080]">Trip Bus National</span> nasceu no dia
+                <span class="text-orange-600 font-semibold">27 de abril de 2026</span>, com o intuito de trazer
+                conhecimento em âmbito estudantil e para entusiastas do mundo da tecnologia.
+            </p>
+            <p>
+                Nascemos para ser uma ponte para iniciantes que desejam embarcar nesta jornada tecnológica, oferecendo
+                um ambiente de aprendizado prático e moderno.
+            </p>
+        </section>
+
+        <!-- Card de Arquitetura -->
+        <section class="bg-gray-50 p-8 rounded-xl border-l-8 border-orange-500 shadow-inner">
+            <h2 class="text-xl font-bold text-[#000080] mb-4 uppercase">Arquitetura Moderna</h2>
+            <p class="text-sm text-gray-600 mb-6">
+                O projeto utiliza componentes e arquitetura de ponta, garantindo uma experiência de alta performance:
+            </p>
+
+            <div class="grid grid-cols-2 gap-3">
+                <div *ngFor="let tech of tecnologias" class="flex items-center gap-2 text-sm font-medium">
+                    <i class="fa-solid fa-check text-green-500"></i>
+                    {{ tech }}
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- INTERAÇÃO COM O VLIBRAS-->
+
+    <section class="mt-8 flex items-center gap-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
+  <!-- Ícone de Acessibilidade -->
+  <div class="bg-[#000080] p-3 rounded-full text-white">
+    <i class="fa-solid fa-hands-asl-interpreting" aria-hidden="true"></i>
+  </div>
+  
+  <div>
+    <h4 class="font-bold text-[#000080]">Suporte em Libras</h4>
+    <p class="text-xs text-gray-600">
+      Utilize o widget ao lado para traduzir nossa história ou clique para ver o resumo.
+    </p>
+  </div>
+  
+  <!-- Botão que pode abrir um modal com vídeo explicativo -->
+  <button class="ml-auto text-sm font-bold text-orange-600 hover:underline focus:ring-2 focus:ring-orange-500 rounded p-1"
+          aria-label="Ver resumo em vídeo de Libras">
+    VER VÍDEO
+  </button>
+</section>
+
+    <!-- Seção Técnica Detalhada -->
+    <article class="mt-12 p-6 bg-[#000080] text-white rounded-xl">
+        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-gears"></i> Infraestrutura e Desenvolvimento
+        </h3>
+        <p class="text-sm opacity-90 leading-relaxed">
+            Envolvemos conteinerização com <strong>Docker</strong> e API com <strong>Ruby on Rails</strong>, além do
+            <strong>Tomcat</strong> para hospedagem e estabilização do tráfego. A interface é construída com
+            <strong>Angular 17+</strong>, incluindo <strong>SASS</strong>, <strong>Tailwind</strong> e
+            <strong>NodeJS</strong>,
+            trazendo vida e estilização profissional que pode ser adaptada às necessidades da sua jornada.
+        </p>
+    </article>
+
+    <footer class="mt-12 text-center">
+        <button routerLink="/home"
+            class="hover:scale-105 transition-transform bg-orange-500 text-white px-10 py-3 rounded-full font-bold shadow-lg">
+            Conhecer Destinos
+        </button>
+    </footer>
+</div>

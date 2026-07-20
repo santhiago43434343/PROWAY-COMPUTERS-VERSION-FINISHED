@@ -1,0 +1,62 @@
+<footer class="footer bg-gray-100 p-8 mt-10">
+  <div class="max-w-6xl mx-auto flex flex-wrap gap-8 justify-between items-start">
+
+    <!-- Marca -->
+    <section>
+      <h2 class="text-2xl font-bold">
+        <span class="text-blue-600">Proway</span><span class="text-orange-500">Computers</span>
+      </h2>
+      <p class="text-sm text-gray-500 mt-1">CNPJ: 43.434.343/9999-99</p>
+    </section>
+
+    <!-- Links institucionais (substitui os contatos soltos) -->
+    <nav class="flex flex-col gap-2 text-sm">
+      <h3 class="font-bold text-gray-700 mb-1">Institucional</h3>
+      <a routerLink="/politica-privacidade" class="text-gray-600 hover:text-blue-600 transition">Política de Privacidade</a>
+      <a routerLink="/contato" class="text-gray-600 hover:text-blue-600 transition">Fale Conosco</a>
+      <a routerLink="/contato" class="text-gray-600 hover:text-blue-600 transition">Formulário de Contato</a>
+    </nav>
+
+    <!-- Selos -->
+    <div class="flex items-center space-x-4">
+      <a href="https://www.ebit.com.br" target="_blank" rel="noopener noreferrer" aria-label="Selo Ebit">
+        <img src="icons/ebit.jpeg" alt="Selo Ebit" class="h-20 w-auto cursor-pointer transition transform hover:scale-105" />
+      </a>
+      <a href="https://www.reclameaqui.com.br" target="_blank" rel="noopener noreferrer" aria-label="Selo Reclame Aqui">
+        <img src="icons/reclame-aqui.png" alt="Selo Reclame Aqui" class="h-20 w-auto cursor-pointer transition transform hover:scale-105" />
+      </a>
+    </div>
+  </div>
+
+  <!-- Banner de formas de pagamento -->
+  <section class="max-w-6xl mx-auto mt-8 border-t border-gray-200 pt-6">
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
+      <!-- Bandeiras -->
+      <div class="flex items-center gap-3 flex-wrap justify-center">
+        <span class="font-bold text-gray-700">Formas de pagamento:</span>
+        <i class="fa-brands fa-cc-visa text-4xl text-[#1a1f71]" title="Visa" aria-label="Visa"></i>
+        <i class="fa-brands fa-cc-mastercard text-4xl text-[#eb001b]" title="Mastercard" aria-label="Mastercard"></i>
+        <i class="fa-brands fa-cc-paypal text-4xl text-[#003087]" title="PayPal" aria-label="PayPal"></i>
+        <span class="px-2.5 py-1 rounded-md bg-[#009ee3] text-white text-xs font-bold" title="Mercado Pago">Mercado Pago</span>
+        <i class="fa-brands fa-pix text-3xl text-[#32bcad]" title="PIX" aria-label="PIX"></i>
+      </div>
+
+      <!-- Vantagens -->
+      <div class="flex items-center gap-5 text-sm flex-wrap justify-center">
+        <span class="flex items-center gap-2 text-gray-700">
+          <i class="fa-solid fa-credit-card text-blue-600 text-lg"></i>
+          Até <strong class="text-gray-900">12x sem juros</strong>
+        </span>
+        <span class="flex items-center gap-2 text-gray-700">
+          <i class="fa-solid fa-coins text-yellow-500 text-lg"></i>
+          <strong class="text-gray-900">Cashback</strong> em compras
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Direitos autorais -->
+  <section class="footer__copyright text-center text-sm text-gray-500 mt-8 border-t border-gray-200 pt-4">
+    &copy; 2025 ProwayComputers — Todos os direitos reservados
+  </section>
+</footer>

@@ -1,0 +1,22 @@
+<h2>Escolha a forma de entrega</h2>
+
+<div class="space-y-4">
+  <div *ngFor="let op of options" class="flex items-center gap-4 border p-3 rounded">
+    <input type="radio" name="frete" [(ngModel)]="selecionado" [value]="op" />
+    <div>
+      <p class="font-semibold">{{ op.nome }}</p>
+      <p class="text-red-600 font-bold">R$ {{ op.valor | number:'1.2-2' }}</p>
+      <p class="text-sm text-gray-600">Prazo: {{ op.prazo }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="flex gap-4 mt-6">
+  <button (click)="back.emit()" class="bg-gray-400 text-white px-6 py-2 rounded">
+    Voltar
+  </button>
+  <button (click)="continuar()" 
+          class="bg-blue-600 text-white px-6 py-2 rounded">
+     Continuar
+  </button>
+</div>

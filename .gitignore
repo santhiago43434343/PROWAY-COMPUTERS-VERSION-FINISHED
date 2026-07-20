@@ -1,0 +1,36 @@
+# --- SEGURANÇA ---
+.env
+.env.*
+!.env.example
+DADOS-TESTE.md
+.docker-data/
+config/master.key
+
+# --- BACKEND (RAILS) ---
+/ECOMMERCE-BACKEND-RUBY-RAILS-ANGULAR-TAILWIND-SASS/log/*.log
+/ECOMMERCE-BACKEND-RUBY-RAILS-ANGULAR-TAILWIND-SASS/tmp/
+/ECOMMERCE-BACKEND-RUBY-RAILS-ANGULAR-TAILWIND-SASS/db/*.sqlite3
+/ECOMMERCE-BACKEND-RUBY-RAILS-ANGULAR-TAILWIND-SASS/db/*.sqlite3-journal
+.bundle/
+vendor/bundle
+
+# --- FRONTEND (ANGULAR) ---
+node_modules/
+/ECOMMERCE-FRONTEND-ANGULAR-TAILWIND-SASS-NODEJS/node_modules/
+/ECOMMERCE-FRONTEND-ANGULAR-TAILWIND-SASS-NODEJS/dist/
+/ECOMMERCE-FRONTEND-ANGULAR-TAILWIND-SASS-NODEJS/.angular/
+
+# --- DOCKER E BANCO ---
+db_data/
+.DS_Store
+
+# --- LIMPEZA ADICIONAL ---
+# Dados do Postgres nunca vão para o repo
+pgdata/
+**/pgdata/
+# Metadados do Windows (mark-of-the-web) — pega .Zone.Identifier E arquivo:Zone.Identifier
+*Zone.Identifier
+*:Zone.Identifier
+# Build do GitHub Pages (descomente se NÃO publicar a partir de /docs)
+# /ECOMMERCE-FRONTEND-ANGULAR-TAILWIND-SASS-NODEJS/docs/
+_tripbus/

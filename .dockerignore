@@ -1,0 +1,10 @@
+.git
+.env
+node_modules
+dist
+tmp
+log
+*.log
+Dockerfile
+docker-compose*
+.DS_Store

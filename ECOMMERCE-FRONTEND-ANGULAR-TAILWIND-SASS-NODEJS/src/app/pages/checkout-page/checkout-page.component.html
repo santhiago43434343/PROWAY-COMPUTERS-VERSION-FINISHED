@@ -1,0 +1,68 @@
+<!-- Banner: retomar compra em andamento -->
+<div *ngIf="mostrarRetomar" class="max-w-2xl mx-auto mt-10 p-8 bg-white rounded-3xl shadow-lg text-center">
+  <div class="text-5xl mb-3">🛒</div>
+  <h2 class="text-xl font-black text-gray-800 mb-2">Gostaria de continuar sua compra?</h2>
+  <p class="text-gray-500 mb-6">Encontramos uma compra em andamento. Você pode continuar de onde parou ou começar de novo.</p>
+  <div class="flex flex-wrap gap-3 justify-center">
+    <button (click)="continuarCompra()"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-2.5 rounded-xl transition">
+      Continuar compra
+    </button>
+    <button (click)="recomecarCompra()"
+            class="border border-gray-300 text-gray-600 font-bold px-6 py-2.5 rounded-xl hover:bg-gray-50 transition">
+      Recomeçar
+    </button>
+  </div>
+</div>
+
+<!-- Fluxo do checkout -->
+<div *ngIf="!mostrarRetomar">
+  <app-progress-bar [currentStep]="currentStep"></app-progress-bar>
+
+  <div class="mt-6">
+    <!-- Etapa 1: Carrinho -->
+    <app-step-cart
+      *ngIf="currentStep === 1"
+      [cart]="orderData.cart"
+      (cartData)="setCart($event)"
+      (next)="goToStep(2)">
+    </app-step-cart>
+
+    <!-- Etapa 2: Endereço -->
+    <app-step-address
+      *ngIf="currentStep === 2"
+      [initial]="orderData.address"
+      (next)="goToStep(3)"
+      (back)="goToStep(1)"
+      (addressData)="orderData.address = $event">
+    </app-step-address>
+
+    <!-- Etapa 3: Pagamento -->
+    <app-step-payment
+      *ngIf="currentStep === 3"
+      [initialPaymentData]="orderData.payment"
+      (next)="goToStep(4)"
+      (back)="goToStep(2)"
+      (paymentData)="orderData.payment = $event">
+    </app-step-payment>
+
+    <!-- Etapa 4: Revisão -->
+    <app-step-review
+      *ngIf="currentStep === 4"
+      [orderData]="orderData"
+      (finish)="finishOrder()"
+      (back)="goToStep(3)">
+    </app-step-review>
+
+    <!-- Etapa 5: Conclusão -->
+    <app-step-complete
+      *ngIf="currentStep === 5"
+      [rastreio]="rastreio"
+      [statusPedido]="statusPedido"
+      [paymentMethod]="orderData.payment.metodo"
+      [pixCode]="pixCode || '00020126360014BR.GOV.BCB.PIX...'"
+      [pixQrBase64]="pixQrBase64"
+      [urlPagamento]="urlPagamento">
+    </app-step-complete>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+.erro-404 {
+  @apply text-center mt-24 text-red-500;
+  transform: translateY(-300px);
+  a {
+    @apply inline-block mt-5 text-blue-600 underline transition-colors duration-300;
+  }
+
+  a:hover {
+    @apply text-blue-700;
+  }
+}

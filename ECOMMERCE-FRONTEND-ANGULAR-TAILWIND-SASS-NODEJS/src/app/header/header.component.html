@@ -1,0 +1,123 @@
+<!-- HEADER -->
+<header class="main-header">
+  <h2 class="text-6xl font-bold">
+    <a routerLink="/" class="no-underline hover:opacity-80 transition">
+      <span class="text-blue-600">Proway</span>
+      <span class="text-orange-500">Computers</span>
+    </a>
+  </h2>
+
+  <div class="container-menu">
+    <nav class="main-header__menu">
+      <ul>
+        <!-- Produtos -->
+        <li>
+          <a routerLink="/produtos">
+            <i class="fa-solid fa-list"></i>
+            Produtos
+          </a>
+        </li>
+
+        <!-- Servidores -->
+        <li>
+          <a routerLink="/servidores">
+            <i class="fa-solid fa-server"></i>
+            Servidores
+          </a>
+        </li>
+
+        <!-- Carrinho -->
+        <li>
+          <a routerLink="/carrinho">
+            <i class="fa-solid fa-cart-shopping"></i>
+            Carrinho
+            <span class="badge-carrinho">
+              {{ carrinhoService.obterCarrinho().length }}
+            </span>
+          </a>
+        </li>
+
+        <!-- Contato -->
+        <li>
+          <a routerLink="/contato">
+            <i class="fa-solid fa-envelope"></i>
+            Contato
+          </a>
+        </li>
+
+        <!-- Autenticação (renderizado só no browser) -->
+        @if (mostrarAuth) {
+          @if (logado) {
+            <li>
+              <span class="font-semibold text-blue-600">
+                <i class="fa-solid fa-circle-user"></i>
+                Bem-vindo, {{ primeiroNome || 'cliente' }}
+              </span>
+            </li>
+            <li>
+              <a routerLink="/meus-pedidos" class="hover:text-blue-500 transition-colors">
+                <i class="fa-solid fa-box-open"></i>
+                Meus Pedidos
+              </a>
+            </li>
+            <li>
+              <a routerLink="/trocar-senha" class="hover:text-blue-500 transition-colors">
+                <i class="fa-solid fa-key"></i>
+                Trocar Senha
+              </a>
+            </li>
+            <li>
+              <a (click)="sair()" style="cursor: pointer;" class="hover:text-red-500 transition-colors">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Sair
+              </a>
+            </li>
+          } @else {
+            <li>
+              <a routerLink="/login" class="hover:text-blue-500 transition-colors">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                Entrar
+              </a>
+            </li>
+            <li>
+              <a routerLink="/cadastro" class="hover:text-blue-500 transition-colors">
+                <i class="fa-solid fa-user-plus"></i>
+                Cadastrar
+              </a>
+            </li>
+          }
+        }
+
+        <!-- Redes sociais -->
+        <li>
+          <a href="https://www.facebook.com" target="_blank">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com" target="_blank">
+            <i class="fa-brands fa-square-instagram"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com" target="_blank">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Formulário de busca -->
+  <form class="search-form" (submit)="buscar($event)">
+    <input
+      type="text"
+      [(ngModel)]="termoBusca"
+      name="busca"
+      placeholder="Buscar produtos..."
+    />
+    <button type="submit">
+      <i class="fa-solid fa-search"></i>
+    </button>
+  </form>
+</header>

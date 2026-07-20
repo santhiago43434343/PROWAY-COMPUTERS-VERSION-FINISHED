@@ -1,0 +1,11 @@
+node_modules
+.angular
+dist
+docs
+.git
+.vscode
+.github
+*.Zone.Identifier
+Dockerfile
+.dockerignore
+npm-debug.log

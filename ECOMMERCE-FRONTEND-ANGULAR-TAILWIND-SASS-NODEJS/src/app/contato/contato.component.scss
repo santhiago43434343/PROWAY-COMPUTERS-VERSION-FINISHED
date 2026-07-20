@@ -1,0 +1,27 @@
+.mensagem-erro {
+ @apply text-red-600 text-sm mt-1
+
+}
+
+input.valid,
+textarea.valid {
+  @apply border-2 border-green-500; 
+}
+
+input.invalid,
+textarea.invalid {
+  @apply border-2 border-red-600;
+}
+
+.contador-caracteres {
+  @apply text-sm mt-1 text-gray-600;
+
+}
+.alerta {
+  @apply text-yellow-500;
+}
+
+.limite {
+  @apply text-red-600;
+ 
+}   

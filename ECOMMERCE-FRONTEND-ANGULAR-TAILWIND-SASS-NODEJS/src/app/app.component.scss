@@ -1,0 +1,20 @@
+.btn-primary {
+  @apply bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700;
+}
+
+.card {
+  @apply max-w-sm bg-white rounded-lg shadow-md overflow-hidden;
+}
+
+.card-title {
+  @apply text-lg font-semibold text-gray-800;
+}
+
+
+.container-menu {
+  @apply flex flex-col gap-5 p-4 min-h-screen;
+
+  @media (max-width: 768px) {
+    @apply flex-row gap-2;
+  }
+}

@@ -1,0 +1,32 @@
+<div class="max-w-2xl mx-auto p-6 bg-white rounded-3xl shadow-xl border border-gray-100">
+    <h2 class="text-2xl font-bold text-[#000080] mb-6 tracking-tight uppercase">Central de Ajuda</h2>
+
+    <form class="space-y-4">
+        <!-- Dados Pessoais -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input type="text" placeholder="Seu Nome"
+                class="p-3 border-2 border-gray-100 rounded-xl focus:border-orange-500 outline-none">
+            <input type="email" placeholder="Seu E-mail"
+                class="p-3 border-2 border-gray-100 rounded-xl focus:border-orange-500 outline-none">
+        </div>
+
+        <!-- Mensagem -->
+        <textarea rows="4" placeholder="Como podemos ajudar?"
+            class="w-full p-3 border-2 border-gray-100 rounded-xl focus:border-orange-500 outline-none"></textarea>
+
+        <!--Logica Para API Whatsapp-->
+
+        <button (click)="direcionarParaWhatsapp()"
+            class="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-3 px-6 rounded-xl transition-all shadow-lg">
+            <i class="fa-brands fa-whatsapp text-xl"></i>
+            Falar com Suporte no WhatsApp
+        </button>
+
+
+        <!-- Botão com Lógica de Estado -->
+        <button type="submit"
+            class="w-full bg-[#000080] text-white py-3 rounded-xl font-bold hover:bg-orange-600 transition-all uppercase">
+            Enviar Mensagem
+        </button>
+    </form>
+</div>

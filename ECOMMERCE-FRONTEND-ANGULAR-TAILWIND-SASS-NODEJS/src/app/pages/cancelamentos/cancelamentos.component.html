@@ -1,0 +1,35 @@
+<div class="container-cancelamento">
+    <h2 class="texto-azul">Gerenciar Cancelamento</h2>
+
+    <p class="texto-azul">Insira o código do seu bilhete para iniciar o processo.</p>
+
+    <div class="busca-container">
+        <input type="text" [(ngModel)]="codigoReserva" placeholder="Ex: TRIP-12345" class="input-busca">
+        <button (click)="buscarReserva()" [disabled]="carregando" class="btn-buscar">
+            {{ carregando ? 'Buscando...' : 'Localizar Passagem' }}
+        </button>
+    </div>
+
+    <div *ngIf="reservaEncontrada" class="card-reserva">
+        <h3>Dados da Passagem</h3>
+        <div class="dados">
+            <p><strong>Passageiro:</strong> {{ reservaEncontrada.passageiro }}</p>
+            <p><strong>Trajeto:</strong> {{ reservaEncontrada.origem }} → {{ reservaEncontrada.destino }}</p>
+            <p><strong>Data:</strong> {{ reservaEncontrada.dataViagem }}</p>
+        </div>
+
+        <div class="alerta-cancelamento">
+            <p>
+                * <i>Atenção: O estorno será realizado conforme as politicas internas da ANTT,
+                    visite a <a href="https://portal.antt.gov.br/perguntas-frequentes/-/categories/5786816"
+                        target="_blank" rel="noopener" class="link-antt">web page</a> para mais informações.</i>
+            </p>
+
+            <button (click)="confirmarCancelamento()" class="btn-confirmar">
+                Confirmar Cancelamento Agora
+            </button>
+        </div>
+    </div>
+
+    <p *ngIf="mensagemErro" class="erro-msg">{{ mensagemErro }}</p>
+</div>

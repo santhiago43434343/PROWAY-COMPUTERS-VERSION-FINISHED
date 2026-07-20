@@ -1,0 +1,43 @@
+<main class="max-w-4xl mx-auto p-8 bg-white shadow-2xl rounded-3xl my-12 border border-gray-100" role="main">
+  <header class="text-center mb-10">
+    <h1 class="text-3xl font-extrabold text-[#000080] uppercase tracking-tight">Trabalhe Conosco</h1>
+    <p class="text-gray-500 mt-2 font-medium">Faça parte da nossa jornada tecnológica</p>
+    <div class="h-1.5 w-20 bg-orange-500 mx-auto mt-4 rounded-full"></div>
+  </header>
+
+  <form class="space-y-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Nome Completo -->
+      <div class="flex flex-col">
+        <label for="nome" class="text-sm font-bold text-[#000080] mb-2 uppercase">Nome Completo</label>
+        <input type="text" id="nome" class="p-3 border-2 border-gray-200 rounded-xl focus:border-orange-500 outline-none transition-all" placeholder="Seu nome aqui">
+      </div>
+
+      <!-- E-mail -->
+      <div class="flex flex-col">
+        <label for="email" class="text-sm font-bold text-[#000080] mb-2 uppercase">E-mail Profissional</label>
+        <input type="email" id="email" class="p-3 border-2 border-gray-200 rounded-xl focus:border-orange-500 outline-none transition-all" placeholder="exemplo@tech.com">
+      </div>
+    </div>
+
+    <!-- Upload de Currículo (PDF) -->
+    <div class="flex flex-col p-6 border-2 border-dashed border-gray-300 rounded-2xl bg-gray-50 hover:bg-orange-50 transition-colors group">
+      <label class="text-center cursor-pointer">
+        <i class="fa-solid fa-file-pdf text-4xl text-gray-400 group-hover:text-orange-500 mb-3 block"></i>
+        <span class="text-sm font-bold text-gray-600 block">ANEXAR CURRÍCULO (PDF)</span>
+        <span class="text-xs text-gray-400">Arraste ou clique para selecionar</span>
+        <input type="file" class="hidden" accept=".pdf" (change)="onFileSelected($event)">
+      </label>
+    </div>
+
+    <!-- Mensagem/Motivação -->
+    <div class="flex flex-col">
+      <label for="mensagem" class="text-sm font-bold text-[#000080] mb-2 uppercase">Por que quer se juntar à Trip Bus?</label>
+      <textarea id="mensagem" rows="4" class="p-3 border-2 border-gray-200 rounded-xl focus:border-orange-500 outline-none transition-all" placeholder="Conte um pouco sobre sua paixão por tecnologia..."></textarea>
+    </div>
+
+    <button type="submit" class="w-full bg-[#000080] hover:bg-orange-600 text-white font-black py-4 rounded-xl shadow-lg hover:scale-[1.02] transition-all uppercase tracking-widest">
+      Enviar Candidatura
+    </button>
+  </form>
+</main>

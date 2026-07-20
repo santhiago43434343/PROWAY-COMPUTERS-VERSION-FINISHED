@@ -1,0 +1,29 @@
+<div class="min-h-[70vh] flex items-center justify-center px-4">
+  <div class="w-full max-w-md bg-white rounded-3xl shadow-lg p-8 text-center">
+
+    <ng-container *ngIf="estado === 'carregando'">
+      <div class="text-5xl mb-3">⏳</div>
+      <p class="text-gray-600">Confirmando seu e-mail...</p>
+    </ng-container>
+
+    <ng-container *ngIf="estado === 'ok'">
+      <div class="text-6xl mb-3">✅</div>
+      <h1 class="text-2xl font-bold text-green-600 mb-2">E-mail confirmado!</h1>
+      <p class="text-gray-600">{{ mensagem }}</p>
+      <a routerLink="/login"
+         class="inline-block mt-6 bg-blue-600 text-white font-semibold px-6 py-2.5 rounded-xl hover:bg-blue-700 transition">
+        Ir para o login
+      </a>
+    </ng-container>
+
+    <ng-container *ngIf="estado === 'erro'">
+      <div class="text-6xl mb-3">❌</div>
+      <h1 class="text-2xl font-bold text-red-600 mb-2">Não foi possível confirmar</h1>
+      <p class="text-gray-600">{{ mensagem }}</p>
+      <a routerLink="/login"
+         class="inline-block mt-6 border border-gray-300 text-gray-700 font-semibold px-6 py-2.5 rounded-xl hover:bg-gray-50 transition">
+        Voltar ao login
+      </a>
+    </ng-container>
+  </div>
+</div>

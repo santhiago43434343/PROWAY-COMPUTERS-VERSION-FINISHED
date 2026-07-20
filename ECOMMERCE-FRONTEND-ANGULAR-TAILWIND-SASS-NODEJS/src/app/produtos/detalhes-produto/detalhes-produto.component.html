@@ -1,0 +1,30 @@
+<section class="product__container" *ngIf="produtoSelecionado">
+
+  <div class="product-image__container">
+  <img [src]="imgPath"
+   alt="{{ produtoSelecionado.nome }}"zoomOnClick
+      class="w-32 h-32 object-cover rounded cursor-pointer"
+   class="w-[120px] h-[120px] sm:h-[180px] md:w-[220px] md:h-[220px]
+   lg:w-[280px] lg:h-[280px] object-contain" />
+</div>
+
+
+  <div class="product-description__container">
+    <h2 class="product__name">{{ produtoSelecionado.nome }}</h2>
+    <p class="product__price">R$ {{ produtoSelecionado.preco }}</p>
+    <p class="text-green-600 font-semibold">{{ produtoSelecionado.descricaoPreco }}</p>
+    <p class="text-gray-700">
+      {{ produtoSelecionado.descricao || 'Sem descrição disponível.' }}
+    </p>
+
+    <label for="quantidade">Quantidade:</label>
+    <input #quantidadeInput id="quantidade" type="number" min="1" value="1" />
+
+    <button class="add-to-cart" (click)="adicionarAoCarrinho()">
+      Adicionar ao carrinho
+    </button>
+  </div>
+
+  <button class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition" [routerLink]="['/']"> 
+    Voltar ao menu principal </button>
+</section>

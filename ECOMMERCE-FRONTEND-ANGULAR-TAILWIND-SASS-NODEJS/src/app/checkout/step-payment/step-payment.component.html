@@ -1,0 +1,79 @@
+<div class="max-w-4xl mx-auto p-4">
+  <h2 class="text-2xl font-black mb-6 border-b-4 border-indigo-500 inline-block">Forma de Pagamento</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+    <label
+      [class.border-blue-500]="metodoSelecionado === 'mercadopago'"
+      [class.bg-blue-50]="metodoSelecionado === 'mercadopago'"
+      class="flex items-center gap-3 cursor-pointer p-4 border-2 rounded-2xl hover:shadow-md transition-all">
+      <input type="radio" name="metodo" [(ngModel)]="metodoSelecionado" value="mercadopago" class="w-5 h-5 text-blue-600" />
+      <div class="flex flex-col">
+        <span class="font-black text-blue-700">Mercado Pago</span>
+        <span class="text-xs text-gray-500">Cartão, Pix ou Boleto</span>
+      </div>
+      <span class="ml-auto text-2xl">💳</span>
+    </label>
+
+    <label
+      [class.border-indigo-500]="metodoSelecionado === 'pix'"
+      [class.bg-indigo-50]="metodoSelecionado === 'pix'"
+      class="flex items-center gap-3 cursor-pointer p-4 border-2 rounded-2xl hover:shadow-md transition-all">
+      <input type="radio" name="metodo" [(ngModel)]="metodoSelecionado" value="pix" class="w-5 h-5 text-indigo-600" />
+      <div class="flex flex-col">
+        <span class="font-bold text-gray-800">Pix Direto</span>
+        <span class="text-xs text-gray-500">Aprovação instantânea</span>
+      </div>
+      <span class="ml-auto text-2xl">📱</span>
+    </label>
+
+    <label
+      [class.border-yellow-500]="metodoSelecionado === 'paypal'"
+      [class.bg-yellow-50]="metodoSelecionado === 'paypal'"
+      class="flex items-center gap-3 cursor-pointer p-4 border-2 rounded-2xl hover:shadow-md transition-all">
+      <input type="radio" name="metodo" [(ngModel)]="metodoSelecionado" value="paypal" class="w-5 h-5 text-yellow-600" />
+      <div class="flex flex-col">
+        <span class="font-bold text-gray-800">PayPal</span>
+        <span class="text-xs text-gray-500">Pagamento internacional</span>
+      </div>
+      <span class="ml-auto text-2xl">🅿️</span>
+    </label>
+
+  </div>
+
+  <p class="text-sm text-gray-400 mt-4 italic">
+    Método selecionado: <span class="font-bold uppercase text-indigo-600">{{ metodoSelecionado }}</span>
+  </p>
+
+  <div *ngIf="metodoSelecionado === 'pix'" class="mt-6 p-6 bg-indigo-50 rounded-3xl border-2 border-indigo-100 text-center">
+    <p class="text-indigo-800 font-bold mb-2">Pague via PIX na próxima tela</p>
+    <p class="text-xs text-indigo-600">O código "Copia e Cola" será gerado ao finalizar o pedido.</p>
+  </div>
+
+  <div *ngIf="metodoSelecionado === 'mercadopago'" class="mt-6 p-6 bg-blue-600 rounded-3xl text-white shadow-lg">
+    <div class="flex items-center gap-4">
+      <span class="text-3xl">🛡️</span>
+      <div>
+        <p class="font-black text-lg">Ambiente Seguro</p>
+        <p class="text-sm opacity-90">Ao finalizar, você será levado ao checkout oficial (sandbox) do Mercado Pago para concluir o pagamento.</p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="metodoSelecionado === 'paypal'" class="mt-6 p-6 bg-yellow-50 rounded-3xl border-2 border-yellow-100 text-center">
+    <p class="text-yellow-800 font-bold">Você concluirá o pagamento com o PayPal na etapa de revisão.</p>
+  </div>
+
+  <div class="flex justify-between items-center mt-10">
+    <button (click)="goBack()" class="text-gray-500 hover:text-gray-800 font-bold px-6 py-2 transition-colors">
+      ← Voltar
+    </button>
+
+    <button
+      (click)="continuar()"
+      [disabled]="!metodoSelecionado"
+      class="bg-green-500 hover:bg-green-600 disabled:bg-gray-300 text-white text-lg font-black px-10 py-3 rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+      Continuar
+    </button>
+  </div>
+</div>

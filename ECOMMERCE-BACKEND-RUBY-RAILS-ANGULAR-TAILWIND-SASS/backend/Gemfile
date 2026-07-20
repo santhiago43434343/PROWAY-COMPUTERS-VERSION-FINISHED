@@ -1,0 +1,49 @@
+source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+ruby '~>3.2' #aceitar qualquer versão do gem ou ruby sem travar 
+
+#psych
+gem "psych", "~> 5.1"
+
+# Framework principal
+gem "rails", "= 7.0.8.1"
+
+# Banco de dados PostgreSQL
+gem 'pg', '>= 1.1', '< 2.0'
+
+# Gerenciamento de assets (se usar importmap ou webpacker)
+gem 'sprockets-rails'
+
+# CORS para permitir requisições do Angular
+gem 'rack-cors'
+
+# Autenticação (login/registro) + JWT para a API
+gem 'devise'
+gem 'devise-jwt'
+
+# Carregar variáveis de ambiente do arquivo .env (desenvolvimento/teste)
+gem 'dotenv-rails', groups: [:development, :test]
+
+# Para desenvolvimento
+group :development, :test do
+  gem 'byebug'
+end
+
+# Para testes
+group :test do
+  gem 'rspec-rails'
+end
+
+gem "logger"
+
+gem "bootsnap", require: false
+
+# Produção
+group :production do
+  gem 'puma'
+  gem 'nio4r', '~>2.0'
+end
+
+#Api Mercado Pago
+gem 'mercadopago-sdk'

@@ -1,0 +1,44 @@
+<div class="checkout-wrapper">
+  <app-progress-bar [currentStep]="currentStep"></app-progress-bar>
+
+  <div class="step-container">
+
+    <app-step-cart
+      *ngIf="currentStep === 1"
+      [cart]="orderData.cart"
+      (cartData)="setCart($event)"
+      (next)="currentStep = 2">
+    </app-step-cart>
+
+    <app-step-address
+      *ngIf="currentStep === 2"
+      (addressData)="setAddress($event)"
+      (back)="currentStep = 1">
+    </app-step-address>
+
+    <app-step-delivery
+      *ngIf="currentStep === 3"
+      (deliveryData)="setDelivery($event)"
+      (back)="currentStep = 2">
+    </app-step-delivery>
+
+    <app-step-payment
+      *ngIf="currentStep === 4"
+      [total]="orderData.total"
+      (paymentData)="setPayment($event)"
+      (back)="currentStep = 3">
+    </app-step-payment>
+
+    <app-step-review
+      *ngIf="currentStep === 5"
+      [orderData]="orderData"
+      (back)="currentStep = 4"
+      (confirm)="finalizarPedido()">
+    </app-step-review>
+
+    <app-step-complete
+      *ngIf="currentStep === 6">
+    </app-step-complete>
+
+  </div>
+</div>

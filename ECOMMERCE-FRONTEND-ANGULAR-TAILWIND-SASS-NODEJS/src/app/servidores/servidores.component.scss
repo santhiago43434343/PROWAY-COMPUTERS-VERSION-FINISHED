@@ -1,0 +1,30 @@
+@use '../../shared/produto-list.scss' as *; // importa variáveis globais
+@use "sass:color";
+
+// define a cor derivada fora do seletor
+$primary-hover: color.scale($primary-color, $lightness: -20%);
+
+.voltar-home {
+  margin-top: 2rem;
+  text-align: center;
+
+  .product-item__buy-button {
+    background-color: #ff6600;
+    color: #fff;
+    padding: 0.7rem 1.5rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease-in-out, transform 0.2s;
+
+    &:hover {
+      background-color: $primary-hover; // usa a variável já definida
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}
